@@ -1,0 +1,10 @@
+<resources>
+    <color name="widget_bg">#191919</color>
+    <color name="widget_card_bg">#4D47474B</color>
+    <color name="widget_card_center_bg">#26005CFF</color>
+    <color name="widget_status_connected">#33C759</color>
+    <color name="widget_status_disconnected">#59FFFFFF</color>
+    <color name="widget_text_white">#FFFFFFFF</color>
+    <color name="widget_text_label">#66FFFFFF</color>
+    <color name="widget_text_secondary">#BFFFFFFF</color>
+</resources>

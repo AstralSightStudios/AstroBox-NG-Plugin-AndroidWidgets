@@ -1,0 +1,5 @@
+<resources>
+    <string name="widget_unified_name">AstroBox Device Info</string>
+    <string name="widget_mini_name">AstroBox Device Mini</string>
+    <string name="widget_panel_name">AstroBox Device Panel</string>
+</resources>

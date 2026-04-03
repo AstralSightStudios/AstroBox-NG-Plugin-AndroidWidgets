@@ -1,0 +1,15 @@
+[package]
+name = "android-widgets"
+version = "0.1.0"
+authors = ["AstralSightStudios"]
+description = "Android home screen widgets bridge for AstroBox"
+edition = "2021"
+rust-version = "1.77.2"
+links = "android-widgets"
+
+[dependencies]
+serde = "1.0"
+tauri = { version = "2.9.3", features = ["rustls-tls"] }
+
+[build-dependencies]
+tauri-plugin = { version = "2.5.1", features = ["build"] }
