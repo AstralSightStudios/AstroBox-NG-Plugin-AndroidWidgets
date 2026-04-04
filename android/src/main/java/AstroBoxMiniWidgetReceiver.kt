@@ -61,9 +61,6 @@ class AstroBoxMiniWidgetReceiver : AppWidgetProvider() {
                 // System version
                 setTextViewText(R.id.widget_system_version, panel.systemVersion)
 
-                // Updated at
-                setTextViewText(R.id.widget_updated_at, "Updated ${snapshot.updatedAt}")
-
                 // Click to open app
                 setOnClickPendingIntent(R.id.widget_root, buildLaunchPendingIntent(context))
             }

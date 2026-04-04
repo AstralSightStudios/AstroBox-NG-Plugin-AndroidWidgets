@@ -82,10 +82,6 @@ class AstroBoxPanelWidgetReceiver : AppWidgetProvider() {
 
                 // Quick apps
                 setTextViewText(R.id.widget_quick_apps_value, panel.quickAppCount.toString())
-
-                // Updated at
-                setTextViewText(R.id.widget_updated_at, "Updated ${snapshot.updatedAt}")
-
                 // Click to open app
                 setOnClickPendingIntent(R.id.widget_root, buildLaunchPendingIntent(context))
             }
