@@ -126,6 +126,10 @@ class AstroBoxUnifiedWidgetReceiver : AppWidgetProvider() {
                 // Battery
                 setTextViewText(R.id.widget_battery_value, "${panel.battery}%")
                 setTextViewText(R.id.widget_last_charge, panel.lastCharge)
+                setImageViewResource(
+                    R.id.battery_icon,
+                    batteryIconRes(panel.battery, panel.isCharing)
+                )
 
                 // === Center Column ===
 
@@ -156,6 +160,7 @@ class AstroBoxUnifiedWidgetReceiver : AppWidgetProvider() {
                 // === Right Column ===
 
                 // Watchfaces
+                setImageViewResource(R.id.widget_watchface_icon, R.drawable.ic_widget_watchface)
                 setTextViewText(R.id.widget_watchfaces_value, panel.watchfaceCount.toString())
 
                 // Quick apps
@@ -166,6 +171,22 @@ class AstroBoxUnifiedWidgetReceiver : AppWidgetProvider() {
 
                 // Click to open app
                 setOnClickPendingIntent(R.id.widget_root, buildLaunchPendingIntent(context))
+            }
+        }
+
+        private fun batteryIconRes(battery: Int, isCharging: Boolean): Int {
+            if (isCharging) return R.drawable.ic_widget_battery_charging
+
+            val clampedBattery = battery.coerceIn(0, 100)
+            return when {
+                clampedBattery == 100 -> R.drawable.ic_widget_battery_full
+                clampedBattery >= 85 -> R.drawable.ic_widget_battery_90
+                clampedBattery >= 68 -> R.drawable.ic_widget_battery_75
+                clampedBattery >= 51 -> R.drawable.ic_widget_battery_50
+                clampedBattery >= 34 -> R.drawable.ic_widget_battery_25
+                clampedBattery >= 17 -> R.drawable.ic_widget_battery_20
+                clampedBattery >= 1 -> R.drawable.ic_widget_battery_10
+                else -> R.drawable.ic_widget_battery_0
             }
         }
 
