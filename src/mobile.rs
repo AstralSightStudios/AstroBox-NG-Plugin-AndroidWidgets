@@ -1,7 +1,7 @@
 use serde::Serialize;
 use tauri::{
-    AppHandle, Runtime,
     plugin::{PluginApi, PluginHandle},
+    AppHandle, Runtime,
 };
 
 pub fn init<R: Runtime, C: serde::de::DeserializeOwned>(
