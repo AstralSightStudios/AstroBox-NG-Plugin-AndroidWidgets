@@ -7,6 +7,6 @@
     <string name="widget_status_connected">Connected</string>
     <string name="widget_status_disconnected">Disconnected</string>
     <string name="widget_storage_label">Storage</string>
-    <string name="widget_watchfaces_label">Watchfaces</string>
-    <string name="widget_quick_apps_label">Quick apps</string>
+    <string name="widget_watchfaces_label">Watchface count</string>
+    <string name="widget_quick_apps_label">Quick app count</string>
 </resources>

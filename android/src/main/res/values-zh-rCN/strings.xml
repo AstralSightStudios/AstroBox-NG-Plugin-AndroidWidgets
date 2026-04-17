@@ -7,6 +7,6 @@
     <string name="widget_status_connected">已连接</string>
     <string name="widget_status_disconnected">未连接</string>
     <string name="widget_storage_label">存储</string>
-    <string name="widget_watchfaces_label">表盘</string>
-    <string name="widget_quick_apps_label">快应用</string>
+    <string name="widget_watchfaces_label">表盘数量</string>
+    <string name="widget_quick_apps_label">快应用数量</string>
 </resources>
