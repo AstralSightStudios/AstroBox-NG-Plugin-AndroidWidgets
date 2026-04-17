@@ -1,11 +1,14 @@
 package moe.astralsight.astrobox.plugin.android_widgets
 
+import androidx.annotation.Keep
 import org.json.JSONObject
 
+@Keep
 data class SyncWidgetSnapshotArgs(
     val json: String = "{}"
 )
 
+@Keep
 data class AstroBoxConnectedDevicePanel(
     val connected: Boolean = false,
     val deviceName: String = "N/A",
@@ -20,6 +23,7 @@ data class AstroBoxConnectedDevicePanel(
     val quickAppCount: Int = 0,
 )
 
+@Keep
 data class AstroBoxWidgetSnapshot(
     val updatedAt: String = "--:--",
     val connectedDevicePanel: AstroBoxConnectedDevicePanel = AstroBoxConnectedDevicePanel(),
