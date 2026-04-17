@@ -26,11 +26,11 @@ impl<R: Runtime, T: Manager<R>> AndroidWidgetsExt<R> for T {
 
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
     Builder::new("android-widgets")
-        .setup(|app, api| {
+        .setup(|_app, _api| {
             #[cfg(target_os = "android")]
             {
-                let widgets = mobile::init(app, api)?;
-                app.manage(widgets);
+                let widgets = mobile::init(_app, _api)?;
+                _app.manage(widgets);
             }
 
             Ok(())
