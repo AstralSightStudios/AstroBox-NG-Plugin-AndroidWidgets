@@ -73,9 +73,9 @@
 
                 <ImageView
                     android:id="@+id/widget_device_icon"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="3dp"
                     android:src="@drawable/ic_widget_device_round"
                     android:tint="#FFFFFFFF"
                 />
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textColor="#FFFFFFFF"
-                    android:textSize="13sp"
+                    android:textSize="12sp"
                     android:maxLines="2"
                     android:ellipsize="end"
                     android:includeFontPadding="false"

@@ -7,7 +7,7 @@
     android:minResizeWidth="120dp"
     android:minResizeHeight="120dp"
     android:previewLayout="@layout/widget_panel"
-    android:resizeMode="horizontal|vertical"
+    android:resizeMode="horizontal"
     android:targetCellWidth="2"
     android:targetCellHeight="2"
     android:updatePeriodMillis="0"

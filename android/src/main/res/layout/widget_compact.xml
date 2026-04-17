@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:padding="14dp"
+>
+    <!-- Device Icon (top-left) -->
+    <ImageView
+        android:id="@+id/widget_device_icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="top|start"
+        android:src="@drawable/ic_widget_device_bandpro"
+        android:scaleType="fitCenter"
+    />
+
+    <!-- Bottom text block -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:orientation="vertical"
+    >
+        <!-- Status row -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp"
+        >
+            <ImageView
+                android:id="@+id/status_dot"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/status_dot_connected"
+            />
+
+            <TextView
+                android:id="@+id/widget_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#B3FFFFFF"
+                android:textSize="11sp"
+                android:includeFontPadding="false"
+            />
+        </LinearLayout>
+
+        <!-- Device Name -->
+        <TextView
+            android:id="@+id/widget_device_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="5dp"
+        />
+
+        <!-- Battery row -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+        >
+            <ImageView
+                android:id="@+id/battery_icon"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/ic_widget_battery_charging"
+            />
+
+            <TextView
+                android:id="@+id/widget_battery_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#33C759"
+                android:textSize="12sp"
+                android:includeFontPadding="false"
+            />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

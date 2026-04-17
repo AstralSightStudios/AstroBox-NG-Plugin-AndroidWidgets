@@ -9,7 +9,7 @@ import android.content.Intent
 import android.util.Log
 import android.widget.RemoteViews
 
-class AstroBoxPanelWidgetReceiver : AppWidgetProvider() {
+class AstroBoxCompactWidgetReceiver : AppWidgetProvider() {
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -29,35 +29,18 @@ class AstroBoxPanelWidgetReceiver : AppWidgetProvider() {
             val snapshot = AstroBoxWidgetStore.read(context)
             Log.i(
                 TAG,
-                "update panel widgets: count=${appWidgetIds.size}, updatedAt=${snapshot.updatedAt}, connected=${snapshot.connectedDevicePanel.connected}"
+                "update compact widgets: count=${appWidgetIds.size}, updatedAt=${snapshot.updatedAt}, connected=${snapshot.connectedDevicePanel.connected}"
             )
 
             val panel = snapshot.connectedDevicePanel
-            val views = RemoteViews(context.packageName, R.layout.widget_panel).apply {
-                // === Left Column ===
-
-                // Storage
-                setTextViewText(R.id.widget_storage_value, panel.freeStorage)
-                setProgressBar(
-                    R.id.widget_storage_progress,
-                    100,
-                    panel.freeStorageProgress.toInt(),
-                    false
-                )
-
-                // Battery
-                setTextViewText(R.id.widget_battery_value, "${panel.battery}%")
-                setTextViewText(R.id.widget_last_charge, panel.lastCharge)
-
-                // === Center Column ===
-
+            val views = RemoteViews(context.packageName, R.layout.widget_compact).apply {
                 // Status dot
                 setImageViewResource(
                     R.id.status_dot,
                     if (panel.connected) R.drawable.status_dot_connected else R.drawable.status_dot_disconnected
                 )
 
-                // Connection status
+                // Connection status text
                 setTextViewText(
                     R.id.widget_status,
                     context.getString(
@@ -65,7 +48,10 @@ class AstroBoxPanelWidgetReceiver : AppWidgetProvider() {
                     )
                 )
 
-                // Device icon and name
+                // Device name
+                setTextViewText(R.id.widget_device_name, panel.deviceName)
+
+                // Device icon based on device type
                 val deviceIconRes = when (panel.deviceType.lowercase()) {
                     "band" -> R.drawable.ic_widget_device_band
                     "bandpro" -> R.drawable.ic_widget_device_bandpro
@@ -75,24 +61,47 @@ class AstroBoxPanelWidgetReceiver : AppWidgetProvider() {
                     else -> R.drawable.ic_widget_device_round
                 }
                 setImageViewResource(R.id.widget_device_icon, deviceIconRes)
-                setTextViewText(R.id.widget_device_name, panel.deviceName)
 
-                // System version
-                setTextViewText(R.id.widget_system_version, panel.systemVersion)
+                // Battery icon and value
+                setImageViewResource(
+                    R.id.battery_icon,
+                    batteryIconRes(panel.battery, panel.isCharing)
+                )
+                setTextViewText(R.id.widget_battery_value, "${panel.battery}%")
 
-                // === Right Column ===
+                // Battery text color: green when charging, white otherwise
+                val batteryTextColor = if (panel.isCharing) 0xFF33C759.toInt() else 0xFFFFFFFF.toInt()
+                setTextColor(R.id.widget_battery_value, batteryTextColor)
 
-                // Watchfaces
-                setTextViewText(R.id.widget_watchfaces_value, panel.watchfaceCount.toString())
-
-                // Quick apps
-                setTextViewText(R.id.widget_quick_apps_value, panel.quickAppCount.toString())
                 // Click to open app
                 setOnClickPendingIntent(R.id.widget_root, buildLaunchPendingIntent(context))
             }
 
             appWidgetIds.forEach { appWidgetId ->
                 appWidgetManager.updateAppWidget(appWidgetId, views)
+            }
+        }
+
+        fun updateAllWidgets(context: Context) {
+            val appWidgetManager = AppWidgetManager.getInstance(context)
+            val componentName = ComponentName(context, AstroBoxCompactWidgetReceiver::class.java)
+            val appWidgetIds = appWidgetManager.getAppWidgetIds(componentName)
+            updateWidgets(context, appWidgetManager, appWidgetIds)
+        }
+
+        private fun batteryIconRes(battery: Int, isCharging: Boolean): Int {
+            if (isCharging) return R.drawable.ic_widget_battery_charging
+
+            val clampedBattery = battery.coerceIn(0, 100)
+            return when {
+                clampedBattery == 100 -> R.drawable.ic_widget_battery_full
+                clampedBattery >= 85 -> R.drawable.ic_widget_battery_90
+                clampedBattery >= 68 -> R.drawable.ic_widget_battery_75
+                clampedBattery >= 51 -> R.drawable.ic_widget_battery_50
+                clampedBattery >= 34 -> R.drawable.ic_widget_battery_25
+                clampedBattery >= 17 -> R.drawable.ic_widget_battery_20
+                clampedBattery >= 1 -> R.drawable.ic_widget_battery_10
+                else -> R.drawable.ic_widget_battery_0
             }
         }
 
@@ -106,7 +115,7 @@ class AstroBoxPanelWidgetReceiver : AppWidgetProvider() {
 
             return PendingIntent.getActivity(
                 context,
-                1002,
+                1004,
                 launchIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
             )

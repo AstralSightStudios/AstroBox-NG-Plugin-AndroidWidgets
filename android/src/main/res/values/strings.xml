@@ -2,4 +2,11 @@
     <string name="widget_unified_name">AstroBox Device Info</string>
     <string name="widget_mini_name">AstroBox Device Mini</string>
     <string name="widget_panel_name">AstroBox Device Panel</string>
+    <string name="widget_compact_name">AstroBox Device Status</string>
+    <string name="widget_loading_title">AstroBox</string>
+    <string name="widget_status_connected">Connected</string>
+    <string name="widget_status_disconnected">Disconnected</string>
+    <string name="widget_storage_label">Storage</string>
+    <string name="widget_watchfaces_label">Watchfaces</string>
+    <string name="widget_quick_apps_label">Quick apps</string>
 </resources>

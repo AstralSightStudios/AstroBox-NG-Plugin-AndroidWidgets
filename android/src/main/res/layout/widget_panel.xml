@@ -42,7 +42,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Storage"
+                        android:text="@string/widget_storage_label"
                         android:textColor="#BFFFFFFF"
                         android:textSize="9sp"
                         android:includeFontPadding="false"
@@ -268,22 +268,28 @@
                     android:orientation="vertical"
                 >
 
-                    <ImageView
-                        android:id="@+id/widget_watchface_icon"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:layout_gravity="end"
-                        android:padding="4dp"
-                        android:background="@drawable/card_icon_chip_background"
-                        android:src="@drawable/ic_widget_watchface"
-                        android:tint="#66FFFFFF"
-                    />
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                    >
+
+                        <ImageView
+                            android:id="@+id/widget_watchface_icon"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="end|top"
+                            android:padding="4dp"
+                            android:background="@drawable/card_icon_chip_background"
+                            android:src="@drawable/ic_widget_watchface"
+                            android:tint="#66FFFFFF"
+                        />
+                    </FrameLayout>
 
                     <TextView
                         android:id="@+id/widget_watchfaces_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
                         android:textColor="#FFFFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -293,7 +299,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Watchfaces"
+                        android:text="@string/widget_watchfaces_label"
                         android:textColor="#BFFFFFFF"
                         android:textSize="9sp"
                         android:includeFontPadding="false"
@@ -313,6 +319,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="bottom"
                     android:orientation="vertical"
                 >
 
@@ -329,7 +336,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Quick apps"
+                        android:text="@string/widget_quick_apps_label"
                         android:textColor="#BFFFFFFF"
                         android:textSize="9sp"
                         android:includeFontPadding="false"

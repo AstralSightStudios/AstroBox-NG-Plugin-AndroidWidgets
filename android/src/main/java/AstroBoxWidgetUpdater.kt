@@ -5,5 +5,6 @@ import android.content.Context
 object AstroBoxWidgetUpdater {
     fun refreshAll(context: Context) {
         AstroBoxUnifiedWidgetReceiver.updateAllWidgets(context)
+        AstroBoxCompactWidgetReceiver.updateAllWidgets(context)
     }
 }

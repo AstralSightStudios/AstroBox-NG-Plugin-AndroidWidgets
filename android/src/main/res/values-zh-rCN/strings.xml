@@ -1,0 +1,12 @@
+<resources>
+    <string name="widget_unified_name">AstroBox 设备信息</string>
+    <string name="widget_mini_name">AstroBox 迷你组件</string>
+    <string name="widget_panel_name">AstroBox 设备面板</string>
+    <string name="widget_compact_name">AstroBox 设备状态</string>
+    <string name="widget_loading_title">AstroBox</string>
+    <string name="widget_status_connected">已连接</string>
+    <string name="widget_status_disconnected">未连接</string>
+    <string name="widget_storage_label">存储</string>
+    <string name="widget_watchfaces_label">表盘</string>
+    <string name="widget_quick_apps_label">快应用</string>
+</resources>

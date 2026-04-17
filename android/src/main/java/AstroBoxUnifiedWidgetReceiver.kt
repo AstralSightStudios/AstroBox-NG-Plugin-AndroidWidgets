@@ -82,7 +82,9 @@ class AstroBoxUnifiedWidgetReceiver : AppWidgetProvider() {
                 // Connection status text
                 setTextViewText(
                     R.id.widget_status,
-                    if (panel.connected) "Connected" else "Disconnected"
+                    context.getString(
+                        if (panel.connected) R.string.widget_status_connected else R.string.widget_status_disconnected
+                    )
                 )
 
                 // Device name
@@ -90,8 +92,11 @@ class AstroBoxUnifiedWidgetReceiver : AppWidgetProvider() {
 
                 // Device icon based on device type
                 val deviceIconRes = when (panel.deviceType.lowercase()) {
-                    "round" -> R.drawable.ic_widget_device_round
                     "band" -> R.drawable.ic_widget_device_band
+                    "bandpro" -> R.drawable.ic_widget_device_bandpro
+                    "redmiwatch" -> R.drawable.ic_widget_device_redmiwatch
+                    "watchs" -> R.drawable.ic_widget_device_watchs
+                    "round" -> R.drawable.ic_widget_device_round
                     else -> R.drawable.ic_widget_device_round
                 }
                 setImageViewResource(R.id.widget_device_icon, deviceIconRes)
@@ -139,13 +144,18 @@ class AstroBoxUnifiedWidgetReceiver : AppWidgetProvider() {
                 // Connection status
                 setTextViewText(
                     R.id.widget_status,
-                    if (panel.connected) "Connected" else "Disconnected"
+                    context.getString(
+                        if (panel.connected) R.string.widget_status_connected else R.string.widget_status_disconnected
+                    )
                 )
 
                 // Device icon and name
                 val deviceIconRes = when (panel.deviceType.lowercase()) {
-                    "round" -> R.drawable.ic_widget_device_round
                     "band" -> R.drawable.ic_widget_device_band
+                    "bandpro" -> R.drawable.ic_widget_device_bandpro
+                    "redmiwatch" -> R.drawable.ic_widget_device_redmiwatch
+                    "watchs" -> R.drawable.ic_widget_device_watchs
+                    "round" -> R.drawable.ic_widget_device_round
                     else -> R.drawable.ic_widget_device_round
                 }
                 setImageViewResource(R.id.widget_device_icon, deviceIconRes)
