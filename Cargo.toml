@@ -9,7 +9,7 @@ links = "android-widgets"
 
 [dependencies]
 serde = "1.0"
-tauri = { version = "2.11.0", features = ["rustls-tls"] }
+tauri = { version = "2.9.3", features = ["rustls-tls"] }
 
 [build-dependencies]
-tauri-plugin = { version = "2.6.0", features = ["build"] }
+tauri-plugin = { version = "2.5.1", features = ["build"] }
